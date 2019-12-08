@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jnu.dao.PartyManagerMapper" >
+	
+	<select id="managerFindAl"  resultType="com.jnu.domain.PartyManager">
+		select * from Manager 
+	</select> 
+	
+	<select id="managerFindElementById" parameterType="String" resultType="com.jnu.domain.PartyManager">
+		select * from Manager where manager_id= #{managerid}
+	</select> 
+	
+	<!-- 用于查找管理员id -->
+	<select id="findIdByManagerId"  parameterType="String" resultType="String">
+		select manager_id from Manager where manager_id= #{managerid}
+	</select>
+	
+	<!-- 用于管理员登录，用管理员id和密码登录 -->
+	<select id="findPasswordByManagerId"  parameterType="String" resultType="String">
+		select manager_password from Manager where manager_id= #{managerid}
+	</select>
+	
+	<!-- 用于修改密码 -->
+	<update id="managerModifyPassword" parameterType="String" >
+		update Manager 
+			set
+				manager_password = #{new_manager_password}
+			where 
+				manager_id=#{manager_id}
+	</update>
+	
+	<!-- 用于修改电话号码 -->
+	<update id="managerModifyPhoneNumber" parameterType="String" >
+		update Manager 
+			set
+				manager_phone = #{new_manager_phone}
+			where 
+				manager_id=#{manager_id}
+	</update>
+	
+	<!-- 用于修改姓名 -->
+	<update id="managerModifyName" parameterType="String" >
+		update Manager 
+			set
+				manager_name = #{new_manager_name}
+			where 
+				manager_id=#{manager_id}
+	</update>
+	
+
+</mapper>
