@@ -21,7 +21,7 @@ public class PartyMemberController {
 	public PartyMemberService partyMemberService;
 	
 	@RequestMapping("/list")
-	@ResponseBody 					//用于转换json对象
+	@ResponseBody 					//鐢ㄤ簬杞崲json瀵硅薄
 	public List<PartyMember> list() {
 		List<PartyMember> list = partyMemberService.findAll();
 		return list;
@@ -33,7 +33,7 @@ public class PartyMemberController {
 	}
 	
 	/**
-	 * 登录
+	 * 鐧诲綍
 	 * @param userId
 	 * @param password
 	 * @param session
@@ -46,22 +46,22 @@ public class PartyMemberController {
 		String list = partyMemberService.getPassword(userId);
 
 		if(userId!=null&&password.equals(list)) {
-			//如果账号密码匹配，登录成功，跳转到succ页面。必填项之类的可以由前端实现
+			//濡傛灉璐﹀彿瀵嗙爜鍖归厤锛岀櫥褰曟垚鍔燂紝璺宠浆鍒皊ucc椤甸潰銆傚繀濉」涔嬬被鐨勫彲浠ョ敱鍓嶇瀹炵幇
 			return "succ";
 		}
-			//如果账号密码不匹配，登录失败，跳转到failed页面
+			//濡傛灉璐﹀彿瀵嗙爜涓嶅尮閰嶏紝鐧诲綍澶辫触锛岃烦杞埌failed椤甸潰
 		else return "failed";
 	}
 	
 	
-	//根据id查询对象
+	//鏍规嵁id鏌ヨ瀵硅薄
 	@RequestMapping("/search")
 	public String search() {
 		return "search";
 	}
 	
 	
-	/**返回查询结果
+	/**杩斿洖鏌ヨ缁撴灉
 	 * @param userName
 	 * @param session
 	 * @return
@@ -74,7 +74,7 @@ public class PartyMemberController {
 		return partyMember;
 	}
 	
-	//修改密码
+	//淇敼瀵嗙爜
 		@RequestMapping("/modifypwd")
 		public String modifypwd() {
 			return "modifypwd";
@@ -82,7 +82,7 @@ public class PartyMemberController {
 		
 		
 	/**
-	 * 修改密码
+	 * 淇敼瀵嗙爜
 	 * @param userid
 	 * @param old_password
 	 * @param new_password
@@ -98,7 +98,7 @@ public class PartyMemberController {
 		String list = partyMemberService.getPassword(userid);
 
 		if(userid!=null&&old_password.equals(list)) {
-			//如果账号密码匹配，登录成功，跳转到succ页面。必填项之类的可以由前端实现
+			//濡傛灉璐﹀彿瀵嗙爜鍖归厤锛岀櫥褰曟垚鍔燂紝璺宠浆鍒皊ucc椤甸潰銆傚繀濉」涔嬬被鐨勫彲浠ョ敱鍓嶇瀹炵幇
 			partyMemberService.modify_password(userid, new_password);
 			return "succ";
 		}
@@ -106,7 +106,7 @@ public class PartyMemberController {
 		return "failed";
 	}
 	
-	//修改电话号码 
+	//淇敼鐢佃瘽鍙风爜 
 	
 	@RequestMapping("/modifyPhone")
 	public String modifyPhone() {

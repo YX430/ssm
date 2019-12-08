@@ -19,7 +19,7 @@ public class PartyManagerController {
 	public PartyManagerService partyManagerService;
 	
 	@RequestMapping("/list")
-	@ResponseBody 					//ÓÃÓÚ×ª»»json¶ÔÏó
+	@ResponseBody 					//ç”¨äºè½¬æ¢jsonå¯¹è±¡
 	public List<PartyManager> list() {
 		List<PartyManager> list = partyManagerService.managerFindAll();
 		return list;
@@ -36,7 +36,7 @@ public class PartyManagerController {
 		return "login-manager";
 	}
 	/**
-	 * µÇÂ¼
+	 * ç™»å½•
 	 * @param managerid
 	 * @param password
 	 * @param session
@@ -49,7 +49,7 @@ public class PartyManagerController {
          String list = partyManagerService.getManagerPassword(managerid);
 		 if(managerid!=null) {
 			 if(password.equals(list)) {
-				//Èç¹ûÕËºÅÃÜÂëÆ¥Åä£¬µÇÂ¼³É¹¦£¬Ìø×ªµ½succÒ³Ãæ¡£±ØÌîÏîÖ®ÀàµÄ¿ÉÒÔÓÉÇ°¶ËÊµÏÖ
+				//å¦‚æœè´¦å·å¯†ç åŒ¹é…ï¼Œç™»å½•æˆåŠŸï¼Œè·³è½¬åˆ°succé¡µé¢ã€‚å¿…å¡«é¡¹ä¹‹ç±»çš„å¯ä»¥ç”±å‰ç«¯å®ç°
 				 return "succ";
 			 }
 			 else {
@@ -61,14 +61,14 @@ public class PartyManagerController {
 	     }
 	}
 	
-	//ĞŞ¸ÄÃÜÂë
+	//ä¿®æ”¹å¯†ç 
 	@RequestMapping("/modifypwd")
 	public String modifypwd() {
 		return "modifypwd-manager";
 	}
 		
 	/**
-	* ĞŞ¸ÄÃÜÂë
+	* ä¿®æ”¹å¯†ç 
 	* @param managerid
 	* @param old_password
 	* @param new_password
@@ -84,8 +84,8 @@ public class PartyManagerController {
 		String list = partyManagerService.getManagerPassword(managerid);
 			if(managerid!=null) {
 				if(old_password.equals(list)) {
-					//Èç¹ûÕËºÅÃÜÂëÆ¥Åä£¬µÇÂ¼³É¹¦£¬Ìø×ªµ½succÒ³Ãæ¡£±ØÌîÏîÖ®ÀàµÄ¿ÉÒÔÓÉÇ°¶ËÊµÏÖ
-					if(new_password!=null) {//¸ÃÌõ¼şÎŞ·¨¿ØÖÆ£¬Î´ÖªÔ­Òò£¬ĞèÒªÔÚÇ°¶Ë¿ØÖÆÒ»ÏÂ
+					//å¦‚æœè´¦å·å¯†ç åŒ¹é…ï¼Œç™»å½•æˆåŠŸï¼Œè·³è½¬åˆ°succé¡µé¢ã€‚å¿…å¡«é¡¹ä¹‹ç±»çš„å¯ä»¥ç”±å‰ç«¯å®ç°
+					if(new_password!=null) {//è¯¥æ¡ä»¶æ— æ³•æ§åˆ¶ï¼ŒæœªçŸ¥åŸå› ï¼Œéœ€è¦åœ¨å‰ç«¯æ§åˆ¶ä¸€ä¸‹
 						partyManagerService.manager_modifyPassword(managerid, new_password);
 						return "succ";
 					}
@@ -103,7 +103,7 @@ public class PartyManagerController {
 		}
 
 		
-		//ĞŞ¸Ä¹ÜÀíÔ±ĞÅÏ¢
+		//ä¿®æ”¹ç®¡ç†å‘˜ä¿¡æ¯
 		
 		@RequestMapping("/modifyinfo")
 		public String modifyPhone() {
