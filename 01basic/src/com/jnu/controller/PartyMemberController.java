@@ -29,7 +29,7 @@ public class PartyMemberController {
 	
 	@RequestMapping("/login")
 	public String input() {
-		return "login";
+		return "login-member";
 	}
 	
 	/**
